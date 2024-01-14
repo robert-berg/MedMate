@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MedMate</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_history">History</string>
+    <string name="title_edit">edit</string>
+    <string name="title_add">add</string>
+    <string name="title_medicine_list">Edit</string>
+</resources>
