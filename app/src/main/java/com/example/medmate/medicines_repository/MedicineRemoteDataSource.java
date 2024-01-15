@@ -29,16 +29,22 @@ public class MedicineRemoteDataSource {
     }
 
     private void connectToBroker(Runnable onConnectedCallback) {
-        mqttClient.connectWith()
-                .send()
-                .whenComplete((mqtt3ConnAck, throwable) -> {
-                    if (throwable != null) {
-                        Log.d("#tagConnectionError", "Error connecting to MQTT broker", throwable);
-                    } else {
-                        Log.d("#tagConnectionSuccess", "Connected to MQTT broker");
-                        onConnectedCallback.run();
-                    }
-                });
+        // Check if the client is already connected
+        if (mqttClient.getState().isConnected()) {
+            onConnectedCallback.run();
+
+        } else {
+            mqttClient.connectWith()
+                    .send()
+                    .whenComplete((mqtt3ConnAck, throwable) -> {
+                        if (throwable != null) {
+                            Log.d("#tagConnectionError", "Error connecting to MQTT broker", throwable);
+                        } else {
+                            Log.d("#tagConnectionSuccess", "Connected to MQTT broker");
+                            onConnectedCallback.run(); // Run the callback after successful connection
+                        }
+                    });
+        }
     }
 
     public void publishMedicineUpdate(String message) {

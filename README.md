@@ -1,0 +1,1 @@
+[![Alt text for video](image-url.jpg)](./MedMate.mp4)
