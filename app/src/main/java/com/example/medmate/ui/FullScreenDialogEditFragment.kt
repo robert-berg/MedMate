@@ -54,9 +54,7 @@ class FullScreenDialogEditFragment : DialogFragment() {
         medicinesRepository = MedicinesRepository.getInstance(requireContext())
 
         val dialogTitle = view.findViewById<TextView>(R.id.dialog_title)
-
-
-        // Retrieve arguments
+        
         val medicineId = arguments?.getInt("medicineId") ?: -1
         val existingName = arguments?.getString("name") ?: ""
         val existingTime = arguments?.getString("time") ?: ""

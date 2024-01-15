@@ -16,16 +16,18 @@ public class MedicinesRepository {
     private List<IMedicineRepositoryObserver> observers;
 
     // Private constructor
-    private MedicinesRepository(Context context) {
-        localDataSource = new MedicinesLocalDataSource(context);
-        remoteDataSource = new MedicineRemoteDataSource(context);
+    MedicinesRepository(MedicinesLocalDataSource localDataSource,
+                        MedicineRemoteDataSource remoteDataSource) {
+        this.localDataSource = localDataSource;
+        this.remoteDataSource = remoteDataSource;
         observers = new ArrayList<>();
     }
-
     // Public static method to get the instance
     public static synchronized MedicinesRepository getInstance(Context context) {
         if (instance == null) {
-            instance = new MedicinesRepository(context);
+            MedicinesLocalDataSource localDataSource = new MedicinesLocalDataSource(context);
+            MedicineRemoteDataSource remoteDataSource = new MedicineRemoteDataSource(context);
+            instance = new MedicinesRepository(localDataSource, remoteDataSource);
         }
         return instance;
     }
@@ -93,6 +95,7 @@ public class MedicinesRepository {
         }
         return result;
     }
+
 
 }
 

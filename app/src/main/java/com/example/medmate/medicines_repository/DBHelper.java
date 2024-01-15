@@ -22,7 +22,6 @@ public class DBHelper extends SQLiteOpenHelper {
         String CREATE_DAYS_OF_WEEK_TABLE = "CREATE TABLE DaysOfWeek (id INTEGER PRIMARY KEY, day_name TEXT);";
         db.execSQL(CREATE_DAYS_OF_WEEK_TABLE);
 
-        // Populate the DaysOfWeek table with days
         for (String day : new String[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"}) {
             ContentValues values = new ContentValues();
             values.put("day_name", day);
@@ -36,7 +35,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 ");";
 
         db.execSQL(CREATE_MEDICINE_TABLE);
-        // Additional table creations
     }
 
     @Override

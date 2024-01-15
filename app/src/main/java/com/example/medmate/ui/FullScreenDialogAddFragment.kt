@@ -24,13 +24,11 @@ class FullScreenDialogAddFragment : DialogFragment() {
         super.onStart()
         val window = dialog?.window
         val windowParams = window?.attributes
-        windowParams?.dimAmount = 0.75f // Adjust this value for darker or lighter overlay
+        windowParams?.dimAmount = 0.75f
         windowParams?.flags = windowParams?.flags?.or(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
         window?.attributes = windowParams
 
-        // Set dialog width and height
         window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        // Apply margins
         window?.setGravity(Gravity.CENTER)
     }
 
